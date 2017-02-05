@@ -1,7 +1,7 @@
 {
   "name": "redux-api-middleware",
-  "version": "1.0.2",
-  "description": "Redux middleware for calling an API.",
+  "version": "1.1.0",
+  "description": "Redux middleware for calling an API. Forked from https://github.com/agraboso/redux-api-middleware",
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib",
@@ -11,8 +11,8 @@
     "prepublish": "npm run lint && npm test && npm run clean && npm run build",
     "test": "babel-node test/index.js | tap-spec"
   },
-  "repository": "agraboso/redux-api-middleware",
-  "homepage": "https://github.com/agraboso/redux-api-middleware",
+  "repository": "olslash/redux-api-middleware",
+  "homepage": "https://github.com/olslash/redux-api-middleware",
   "keywords": [
     "redux",
     "api",
