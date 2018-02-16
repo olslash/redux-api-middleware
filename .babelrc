@@ -1,7 +1,31 @@
 {
-  "stage": 0,
-  "loose": "all",
-  "optional": [
-    "runtime"
-  ]
+  "env": {
+    "production": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": false
+          }
+        ]
+      ],
+      "plugins": [
+        "external-helpers",
+        [
+          "transform-runtime",
+          {
+            "helpers": false,
+            "polyfill": false
+          }
+        ],
+        "babel-plugin-transform-object-rest-spread"
+      ]
+    },
+    "test": {
+      "presets": [
+          "env"
+      ],
+      "plugins": ["babel-plugin-transform-object-rest-spread"]
+    }
+  }
 }

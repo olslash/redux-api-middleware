@@ -1,6 +1,9 @@
+import isomorphicFetch from 'isomorphic-fetch';
 import test from 'tape';
 import { Schema, normalize, arrayOf } from 'normalizr';
 import nock from 'nock';
+
+global.fetch = isomorphicFetch; // eslint-disable-line
 
 import CALL_API from '../src/CALL_API';
 import { isRSAA, isValidTypeDescriptor, validateRSAA, isValidRSAA } from '../src/validation';
@@ -1901,7 +1904,7 @@ test('apiMiddleware must allow fetch to be passed in', (t) => {
       { 'X-Testing-Header': 'yeah' },
       'passed-in fetch executed with proper headers'
     );
-    return Promise.resolve({ 
+    return Promise.resolve({
       ok: true,
       status: 404,
       headers: { 'Content-Type': 'application/json' },
