@@ -6,7 +6,9 @@
   "module": "lib/index.js",
   "jsnext:main": "lib/index.js",
   "scripts": {
-    "build": "NODE_ENV=production babel src --out-dir lib",
+    "build:es": "NODE_ENV=production babel src --out-dir lib",
+    "build:cjs": "NODE_ENV=production rollup -c",
+    "build": "npm run build:es && npm run build:cjs",
     "clean": "rimraf lib coverage",
     "cover": "babel-node ./node_modules/.bin/babel-istanbul cover test/index.js | tap-spec",
     "lint": "eslint src test",
