@@ -7,6 +7,10 @@ export default [
       {
         file: 'lib/bundle-cjs.js',
         format: 'cjs'
+      },
+      {
+        file: 'lib/bundle-es.js',
+        format: 'es'
       }
     ],
     external: [
