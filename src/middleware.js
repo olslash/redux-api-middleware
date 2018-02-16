@@ -1,4 +1,3 @@
-import isomorphicFetch from 'isomorphic-fetch';
 import isPlainObject from 'lodash.isplainobject';
 import isFunction from 'lodash.isfunction';
 
@@ -13,10 +12,10 @@ import { getJSON, normalizeTypeDescriptors, actionWith } from './util';
  * @type {ReduxMiddleware}
  * @access public
  */
-let fetch = isomorphicFetch;
+let providedFetch;
 function apiMiddleware(storeOrFetch) {
   if (isFunction(storeOrFetch)) {
-    fetch = storeOrFetch;
+    providedFetch = storeOrFetch;
     return apiMiddleware;
   }
   const { getState } = storeOrFetch;
@@ -145,7 +144,7 @@ function apiMiddleware(storeOrFetch) {
 
       try {
         // Make the API call
-        var res = await fetch(endpoint, {
+        var res = await (providedFetch || fetch)(endpoint, {
           ...options,
           method, body, credentials, headers
         });
